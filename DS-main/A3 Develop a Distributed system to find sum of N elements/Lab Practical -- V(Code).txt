@@ -1,0 +1,41 @@
+EXPERIMENT No. 03
+
+Code :
+
+#include <stdio.h>
+#include <mpi.h>
+
+int main(int argc, char** argv) {
+    int rank, size;
+    int arr[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    int sum = 0;
+    MPI_Init(&argc, &argv);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &size);
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int local_sum = 0;
+    for (int i = rank; i < n; i += size) {
+        local_sum += arr[i];
+    }
+    MPI_Reduce(&local_sum, &sum, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+    if (rank == 0) {
+        printf("Sum of array elements is %d\n", sum);
+    }
+    MPI_Finalize();
+}
+
+Process of Execution :(I used Visual Studio Code, you can use by your prefrence.)
+
+1.Install the Microsoft MPI package on your system.
+2.Install the C/C++ extension for Visual Studio Code.
+3.Create a new C file and write your MPI program in it.
+4.Open a terminal window in Visual Studio Code.
+5.Then Compile the Program.
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+EXPERIMENT No.07
+
+Code :
+
+

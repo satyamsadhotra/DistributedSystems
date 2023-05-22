@@ -1,0 +1,17 @@
+  String Reverse using corba , idl and java implementation : 
+
+1. Create the all ReverseServer.java , ReverseClient.java , ReverseImpl.java & ReverseModule.idl  files.
+
+
+  idlj -fall  ReverseModule.idl
+
+   javac *.java  ReverseModule/*.java
+
+  	orbd -ORBInitialPort 1050&
+
+
+  java ReverseServer -ORBInitialPort 1050& -ORBInitialHost localhost&
+
+
+
+  java ReverseClient -ORBInitialPort 1050 -ORBInitialHost localhost  (new Terminal)
